@@ -69,9 +69,8 @@ def export_with_holidays(
             update_sheet_dates(new_sheet, year, month)
             template_wb.remove(template_sheet)
 
-            months_in_data = {(year, month)}
-            all_holidays = fetch_holidays(months_in_data, state_code)
-            fill_holidays(template_wb, months_in_data, all_holidays)
+            all_holidays = fetch_holidays({(year, month)}, state_code)
+            fill_holidays(template_wb, {(year, month)}, all_holidays)
 
             write_work_data(template_wb, month_work_days)
             template_wb.save(output_path)
@@ -88,13 +87,13 @@ def export_with_holidays(
         PermissionError,
     ) as e:
         print(f"Error: Template file {template_path} not found or inaccessible: {e}")
-        return False
+        return []
     except (ValueError, KeyError, IndexError) as e:
         print(f"Error: Invalid data format while processing work data: {e}")
-        return False
+        return []
     except OSError as e:
         print(f"Error: File system error during export: {e}")
-        return False
+        return []
     except (TypeError, AttributeError) as e:
         print(f"Warning: Error processing holiday data during export: {e}")
-        return False
+        return []

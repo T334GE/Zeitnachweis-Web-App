@@ -12,10 +12,9 @@ DEFAULT_DATA_FILE = "../input/data.json"
 
 def load_work_data(data_file_path: str = DEFAULT_DATA_FILE) -> List[WorkDay]:
     validate_file_path(data_file_path)
-    file_ext = get_file_extension(data_file_path)
 
     try:
-        if file_ext == ".json":
+        if get_file_extension(data_file_path) == ".json":
             data = load_json_data(data_file_path)
             return process_work_day_data(data, "json")
     except json.JSONDecodeError as e:

@@ -156,9 +156,8 @@ if "work_data" in st.session_state and st.session_state.work_data:
         ]
 
     # Add pagination controls
-    items_per_page = ITEMS_PER_PAGE
     total_items = len(filtered_data)
-    total_pages = (total_items + items_per_page - 1) // items_per_page
+    total_pages = (total_items + ITEMS_PER_PAGE - 1) // ITEMS_PER_PAGE
 
     # Reset current page if it exceeds total pages (e.g., after filtering)
     current_page = st.session_state.get("current_page", 1)
@@ -278,8 +277,8 @@ if "work_data" in st.session_state and st.session_state.work_data:
 
             # Calculate page boundaries
             page = st.session_state.get("current_page", 1)
-            start_idx = (page - 1) * items_per_page
-            end_idx = min(start_idx + items_per_page, total_items)
+            start_idx = (page - 1) * ITEMS_PER_PAGE
+            end_idx = min(start_idx + ITEMS_PER_PAGE, total_items)
             page_data = filtered_data[start_idx:end_idx]
 
             # Create scrollable container
@@ -353,8 +352,8 @@ if "work_data" in st.session_state and st.session_state.work_data:
 
             # Calculate page boundaries
             page = st.session_state.get("current_page", 1)
-            start_idx = (page - 1) * items_per_page
-            end_idx = min(start_idx + items_per_page, total_items)
+            start_idx = (page - 1) * ITEMS_PER_PAGE
+            end_idx = min(start_idx + ITEMS_PER_PAGE, total_items)
             page_data = filtered_data[start_idx:end_idx]
 
             # Prepare data for display

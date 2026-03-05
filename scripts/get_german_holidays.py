@@ -48,10 +48,7 @@ def get_german_holidays(year: int, state_code: str) -> List[Dict[str, Any]]:
     if cache_key in _holiday_cache:
         return _holiday_cache[cache_key]
 
-    max_retries = MAX_RETRIES
-    retry_delay = INITIAL_RETRY_DELAY
-
-    for attempt in range(max_retries):
+    for attempt in range(MAX_RETRIES):
         try:
             state_code_upper = state_code.upper()
             if state_code_upper not in VALID_STATES:
@@ -86,16 +83,15 @@ def get_german_holidays(year: int, state_code: str) -> List[Dict[str, Any]]:
             return state_holidays
 
         except requests.exceptions.RequestException as e:
-            if attempt == max_retries - 1:
+            if attempt == MAX_RETRIES - 1:
                 print(
-                    f"⚠️  Warning: Network error fetching holidays after {max_retries} attempts: {e}"
+                    f"⚠️  Warning: Network error fetching holidays after {MAX_RETRIES} attempts: {e}"
                 )
                 print("   Continuing without holiday data...")
                 _holiday_cache[cache_key] = []
                 return []
-            print(f"   Retry {attempt + 1}/{max_retries}...")
-            time.sleep(retry_delay)
-            retry_delay *= 2
+            print(f"   Retry {attempt + 1}/{MAX_RETRIES}...")
+            time.sleep(INITIAL_RETRY_DELAY * (2**attempt))
         except ValueError as e:
             print(f"⚠️  Warning: Invalid JSON response from holiday API: {e}")
             _holiday_cache[cache_key] = []
