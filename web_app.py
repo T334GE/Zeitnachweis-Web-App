@@ -37,7 +37,7 @@ with st.sidebar:
 
     # Träger input
     sponsor = st.text_input(
-        "Sponsor",
+        "Träger/Kundennummer",
         value="",
         help="Träger/Kundennummer für das Exportdokument eingeben",
         placeholder="IBB 12345",
@@ -45,7 +45,7 @@ with st.sidebar:
 
     # Business input
     business = st.text_input(
-        "Business",
+        "Betrieb",
         value="",
         help="Betrieb für das Exportdokument eingeben",
         placeholder="Firmenname",
