@@ -337,7 +337,7 @@ if "work_data" in st.session_state and st.session_state.work_data:
 st.header("📖 Anleitung")
 with st.expander("Verwendung"):
     st.markdown("""
-    1. **Einstellungen konfigurieren**: Name, Sponsor und Business in der Seitenleiste eingeben
+    1. **Einstellungen konfigurieren**: Name, Träger/Kundennummer und Betrieb in der Seitenleiste eingeben (optional, wird sonst leer gelassen)
     2. **Daten bereitstellen**: JSON-Datei hochladen oder JSON einfügen
     3. **Exportieren**: Export-Schaltfläche klicken, um Excel-Dateien zu erstellen
     4. **Ergebnisse**: Generierte Excel-Dateien direkt herunterladen
