@@ -85,7 +85,7 @@ with tab2:
     raw_json = st.text_area(
         "JSON-Daten hier einfügen",
         height=300,
-        placeholder='[{"date": "2026-01-19", "weekday": "Montag", "status": "ANWESEND", "status_label": "Anwesend", "start_time": "09:02", "end_time": "17:35", "duration_minutes": 483, "duration": "08:03", "punch_count": 2, "break_minutes": 30, "fallback_end_applied": false}, ...]',
+        placeholder='[{"date": "2026-01-19", "weekday": "Montag", "status": "ANWESEND", "status_label": "Anwesend", "start_time": "08:00", "end_time": "16:30", "duration_minutes": 480, "duration": "08:00", "punch_count": 2, "break_minutes": 30, "fallback_end_applied": false}, ...]',
         help="Arbeitsdaten im JSON-Format einfügen",
     )
 
@@ -170,7 +170,7 @@ if "work_data" in st.session_state and st.session_state.work_data:
 
                         if output_files:
                             st.success("✅ Export erfolgreich abgeschlossen!")
-                            st.session_state['output_files'] = output_files
+                            st.session_state["output_files"] = output_files
                         else:
                             st.error("❌ Export fehlgeschlagen!")
 
@@ -190,7 +190,7 @@ if "work_data" in st.session_state and st.session_state.work_data:
 
                         if output_files:
                             st.success("✅ Export erfolgreich abgeschlossen!")
-                            st.session_state['output_files'] = output_files
+                            st.session_state["output_files"] = output_files
                         else:
                             st.error("❌ Export fehlgeschlagen!")
 
@@ -203,9 +203,9 @@ if "work_data" in st.session_state and st.session_state.work_data:
                 st.error(f"❌ Vollständiger Traceback: {traceback.format_exc()}")
 
     # Display download buttons if output_files exist in session_state
-    if 'output_files' in st.session_state and st.session_state['output_files']:
+    if "output_files" in st.session_state and st.session_state["output_files"]:
         st.subheader("📁 Generierte Excel-Dateien:")
-        for file_path in st.session_state['output_files']:
+        for file_path in st.session_state["output_files"]:
             with open(file_path, "rb") as f:
                 file_data = f.read()
             file_name = Path(file_path).name
@@ -214,7 +214,7 @@ if "work_data" in st.session_state and st.session_state.work_data:
                 data=file_data,
                 file_name=file_name,
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                key=f"download_{file_name}"
+                key=f"download_{file_name}",
             )
 
     with st.expander(
