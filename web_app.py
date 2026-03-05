@@ -93,6 +93,9 @@ with tab2:
         if raw_json.strip():
             try:
                 data = json.loads(raw_json)
+                # Ensure data is a list
+                if isinstance(data, dict):
+                    data = [data]
                 st.success(f"✅ {len(data)} Arbeitstage aus JSON-Text geparst")
                 # Store in session state
                 st.session_state.work_data = data
