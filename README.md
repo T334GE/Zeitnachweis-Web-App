@@ -12,13 +12,13 @@ Du kannst die App entweder online nutzen oder lokal installieren.
 
 **Option 1: Online-Version**
 
-Gehe zu: https://zeitnachweis-export.streamlit.app/
+Gehe zu: https://untimely.streamlit.app/
 
 **Option 2: Lokale Version**
 
 1. Dieses Repository klonen:
 ```bash
-git clone https://github.com/T334GE/Zeitnachweis-Web-App.git
+git clone https://github.com/T334GE/untimely.git
 cd Zeitnachweis-Web-App
 ```
 
@@ -166,4 +166,5 @@ Wenn keine Datendatei angegeben wird, fordert das Skript zur Eingabe der JSON-Da
 
 - `data_file`: Pfad zur JSON-Datendatei (optional, wenn nicht angegeben, Eingabeaufforderung)
 - `--output-dir`: Output-Verzeichnis (optional, Standard: ../output)
+
 
